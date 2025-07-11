@@ -1,6 +1,6 @@
 # session-guard-new
 
-# Session Guard (New)
+# 현재 탐지만 가능합니다!!!
 
 ## 설명
 
