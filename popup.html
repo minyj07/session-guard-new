@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Session Guard</title>
+  <style>
+    body { width: 380px; font-family: sans-serif; color: #333; }
+    h2 { text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
+    .container { padding: 0 15px 15px 15px; }
+    button { width: 100%; padding: 10px; font-size: 14px; cursor: pointer; margin-top: 5px; border: 1px solid #ccc; background-color: #f8f8f8; border-radius: 4px; }
+    button:hover { background-color: #eee; }
+    button.clear-btn { background-color: #f2dede; border-color: #ebccd1; color: #a94442; }
+    button.clear-btn:hover { background-color: #e4b9b9; }
+    h4 { display: flex; align-items: center; gap: 6px; margin-top: 15px; margin-bottom: 5px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+    ul { list-style: none; padding: 0; margin: 0; max-height: 250px; overflow-y: auto; border: 1px solid #eee; border-radius: 4px; }
+    li { padding: 8px; border-bottom: 1px solid #eee; font-size: 12px; line-height: 1.4; }
+    li:last-child { border-bottom: none; }
+    .log-entry span { display: block; }
+    .log-entry .log-type { font-weight: bold; }
+    .log-entry .log-details { font-size: 11px; color: #555; }
+    .log-entry .log-time { font-size: 10px; color: #888; text-align: right; }
+  </style>
+</head>
+<body>
+  <h2>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="#4285F4"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+    Session Guard
+  </h2>
+  
+  <div class="container">
+    <h4>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#d9534f"><path d="M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
+      최근 탐지 기록
+    </h4>
+    <ul id="blocked-log-list"></ul>
+    <button id="clearLogBtn" class="clear-btn">기록 지우기</button>
+  </div>
+
+  <div class="container">
+    <h4>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#4CAF50"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      설정
+    </h4>
+    <div class="setting-item">
+      <label for="enableDNR">DNR 차단 활성화:</label>
+      <input type="checkbox" id="enableDNR">
+    </div>
+    <div class="setting-item">
+      <label for="enableConsoleLogDetection">콘솔 로깅 탐지 활성화:</label>
+      <input type="checkbox" id="enableConsoleLogDetection">
+    </div>
+    <div class="setting-item">
+      <label for="enablePostBodyDetection">POST 본문 탐지 활성화:</label>
+      <input type="checkbox" id="enablePostBodyDetection">
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
